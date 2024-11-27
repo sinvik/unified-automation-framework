@@ -1,0 +1,11 @@
+publish_reports:
+  stage: publish
+  script:
+    - mkdir public
+    - mv target/allure-report/* public
+  artifacts:
+    paths:
+      - public
+    when: always
+  dependencies:
+    - generate_reports

@@ -1,0 +1,9 @@
+allure-behave
+allure-python-commons
+behave
+pylint
+selenium
+requests
+webdriver_manager
+pyodbc
+pandas

@@ -1,0 +1,13 @@
+api_tests:
+  image: $DOCKER_HUB_USER/unified-automation-framework:latest
+  stage: test
+  script:
+    - echo "Running API tests"
+    - bash scripts/run_api_tests.sh
+  artifacts:
+    paths:
+      - target/allure-results/
+    when: always
+  allow_failure: true
+  rules:
+    - if: '$RUN_API == "true"'

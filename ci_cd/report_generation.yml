@@ -1,0 +1,10 @@
+generate_reports:
+  image: $DOCKER_HUB_USER/unified-automation-framework:latest
+  stage: report
+  script:
+    - source /etc/profile.d/java.sh
+    - mvn allure:report
+  artifacts:
+    paths:
+      - target/allure-report/
+    when: always

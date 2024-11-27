@@ -1,0 +1,16 @@
+data-load:
+  image: $DOCKER_HUB_USER/unified-automation-framework:latest
+  stage: data-load
+  script:
+    - echo "Loading data to Azure hosted SQL database"
+    - bash scripts/data_load.sh
+
+  artifacts:
+    paths:
+      - logs/
+    when: always
+
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+      changes:
+        - tests/db/**/*

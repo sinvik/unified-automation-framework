@@ -1,0 +1,22 @@
+build-app:
+  image: docker:latest
+  stage: build-app
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay2
+  before_script:
+    - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+  script:
+    - echo "Building Docker Image from this project"
+    - docker build -t $DOCKER_HUB_USER/unified-automation-framework:latest .
+    - docker push $DOCKER_HUB_USER/unified-automation-framework:latest
+  after_script:
+    - docker logout
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+      changes:
+        - tests/**/*
+        - features/**/*
+        - common/**/*
+        - scripts/**/*

@@ -1,0 +1,13 @@
+web_tests:
+  image: $DOCKER_HUB_USER/unified-automation-framework:latest
+  stage: test
+  script:
+    - echo "Running WEB tests"
+    - bash scripts/run_web_tests.sh
+  artifacts:
+    paths:
+      - target/allure-results/
+    when: always
+  allow_failure: true
+  rules:
+    - if: '$RUN_WEB == "true"'

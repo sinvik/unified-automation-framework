@@ -1,0 +1,11 @@
+lint:
+  image: $DOCKER_HUB_USER/unified-automation-framework
+  stage: lint
+  script:
+    - echo "Scanning your code"
+    - bash scripts/pylint.sh
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+      changes:
+        - tests/**/*
+        - common/**/*

@@ -1,0 +1,17 @@
+include:
+   - local: 'ci_cd/build_app.yml'
+   - local: 'ci_cd/pylint.yml'
+   - local: 'ci_cd/data_load.yml'
+   - local: 'ci_cd/web_test.yml'
+   - local: 'ci_cd/api_test.yml'
+   - local: 'ci_cd/db_test.yml'
+   - local: 'ci_cd/report_generation.yml'
+   - local: 'ci_cd/publish_report.yml'
+
+stages:
+   - build-app
+   - lint
+   - data-load
+   - test
+   - report
+   - publish

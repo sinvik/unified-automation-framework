@@ -1,0 +1,15 @@
+{
+  "WEB": {
+    "browser": "chrome",
+    "headless": true,
+    "base_url": "https://www.saucedemo.com"
+  },
+  "DB": {
+    "driver": "{ODBC Driver 18 for SQL Server}",
+    "server": "tcp:employeedbtest.database.windows.net,1433",
+    "db_name": "employeedb"
+  },
+  "API": {
+    "base_url": "https://jsonplaceholder.typicode.com"
+  }
+}
